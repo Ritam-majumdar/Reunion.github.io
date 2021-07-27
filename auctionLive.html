@@ -13,101 +13,116 @@
         var currentPrice = 3;
         var flag = false;
         var winner = "";
-        function initiate(){
+        function initiate() {
             document.getElementById("bid1").style.display = "none";
             document.getElementById("bid2").style.display = "none";
             document.getElementById("bid3").style.display = "none";
             document.getElementById("bid4").style.display = "none";
         }
-        function increaseBid(x){
-            switch(x){
-                case 1 :
-                    if(!flag){
+        function increaseBid(x) {
+            switch (x) {
+                case 1:
+                    if (!flag) {
                         document.getElementById("bid1").innerHTML = basePrice;
                         flag = true;
                         currentPrice = basePrice;
                     }
-                    else{
+                    else {
                         currentPrice = currentPrice + 1;
                         document.getElementById("bid1").innerHTML = currentPrice;
                     }
-                document.getElementById("bid1").style.display = "block";
-                document.getElementById("currentPrice").innerHTML = currentPrice + " Bits";
-                winner = "Reunited FC";
-                document.getElementById("wining").innerHTML = winner + "is leading on" + currentPrice + " bits.";
-                document.getElementById("btn1").disabled = true;
-                document.getElementById("btn2").disabled = false;
-                document.getElementById("btn3").disabled = false;
-                document.getElementById("btn4").disabled = false;
-                break;
-                case 2 :
-                if(!flag){
+                    document.getElementById("bid1").style.display = "block";
+                    document.getElementById("currentPrice").innerHTML = currentPrice + " Bits";
+                    winner = "Reunited FC";
+                    document.getElementById("wining").innerHTML = winner + "is leading on" + currentPrice + " bits.";
+                    document.getElementById("btn1").disabled = true;
+                    document.getElementById("btn2").disabled = false;
+                    document.getElementById("btn3").disabled = false;
+                    document.getElementById("btn4").disabled = false;
+                    var timeleft = 10;
+                    var downloadTimer = setInterval(function () {
+                        if (timeleft <= 0) {
+                            clearInterval(downloadTimer);
+                            finalize();
+                        }
+                        document.getElementById("progressBar").value = 10 - timeleft;
+                        document.getElementById("countdown").innerHTML =  timeleft;
+                        timeleft -= 1;
+                    }, 1000);
+                    break;
+                case 2:
+                    if (!flag) {
                         document.getElementById("bid2").innerHTML = basePrice;
                         flag = true;
                         currentPrice = basePrice;
-                        
+
                     }
-                    else{
-                        currentPrice = currentPrice +1;
+                    else {
+                        currentPrice = currentPrice + 1;
                         document.getElementById("bid2").innerHTML = currentPrice;
                     }
-                document.getElementById("bid2").style.display = "block";
-                document.getElementById("currentPrice").innerHTML = currentPrice + " Bits";
-                winner = "Amigos FC";
-                document.getElementById("wining").innerHTML = winner + "is leading on" + currentPrice + " bits.";
-                document.getElementById("btn1").disabled = false;
-                document.getElementById("btn2").disabled = true;
-                document.getElementById("btn3").disabled = false;
-                document.getElementById("btn4").disabled = false;
-                break;
-                case 3 :
-                if(!flag){
+                    document.getElementById("bid2").style.display = "block";
+                    document.getElementById("currentPrice").innerHTML = currentPrice + " Bits";
+                    winner = "Amigos FC";
+                    document.getElementById("wining").innerHTML = winner + "is leading on" + currentPrice + " bits.";
+                    document.getElementById("btn1").disabled = false;
+                    document.getElementById("btn2").disabled = true;
+                    document.getElementById("btn3").disabled = false;
+                    document.getElementById("btn4").disabled = false;
+                    break;
+                case 3:
+                    if (!flag) {
                         document.getElementById("bid3").innerHTML = basePrice;
                         flag = true;
                         currentPrice = basePrice;
                     }
-                    else{
-                        currentPrice = currentPrice+1;
+                    else {
+                        currentPrice = currentPrice + 1;
                         document.getElementById("bid3").innerHTML = currentPrice;
                     }
-                document.getElementById("bid3").style.display = "block";
-                document.getElementById("currentPrice").innerHTML = currentPrice + " Bits";
-                winner = "Juntar FC";
-                document.getElementById("wining").innerHTML = winner + "is leading on" + currentPrice + " bits.";
-                document.getElementById("btn1").disabled = false;
-                document.getElementById("btn2").disabled = false;
-                document.getElementById("btn3").disabled = true;
-                document.getElementById("btn4").disabled = false;
-                break;
-                case 4 :
-                if(!flag){
+                    document.getElementById("bid3").style.display = "block";
+                    document.getElementById("currentPrice").innerHTML = currentPrice + " Bits";
+                    winner = "Juntar FC";
+                    document.getElementById("wining").innerHTML = winner + "is leading on" + currentPrice + " bits.";
+                    document.getElementById("btn1").disabled = false;
+                    document.getElementById("btn2").disabled = false;
+                    document.getElementById("btn3").disabled = true;
+                    document.getElementById("btn4").disabled = false;
+                    break;
+                case 4:
+                    if (!flag) {
                         document.getElementById("bid4").innerHTML = basePrice;
                         flag = true;
                         currentPrice = basePrice;
                     }
-                    else{
+                    else {
                         currentPrice = currentPrice + 1;
                         document.getElementById("bid4").innerHTML = currentPrice;
                     }
-                document.getElementById("bid4").style.display = "block";
-                document.getElementById("currentPrice").innerHTML = currentPrice + " Bits";
-                winner = "United FC";
-                document.getElementById("wining").innerHTML = winner + "is leading on" + currentPrice + " bits.";
-                document.getElementById("btn1").disabled = false;
-                document.getElementById("btn2").disabled = false;
-                document.getElementById("btn3").disabled = false;
-                document.getElementById("btn4").disabled = true;
-                break;
+                    document.getElementById("bid4").style.display = "block";
+                    document.getElementById("currentPrice").innerHTML = currentPrice + " Bits";
+                    winner = "United FC";
+                    document.getElementById("wining").innerHTML = winner + "is leading on" + currentPrice + " bits.";
+                    document.getElementById("btn1").disabled = false;
+                    document.getElementById("btn2").disabled = false;
+                    document.getElementById("btn3").disabled = false;
+                    document.getElementById("btn4").disabled = true;
+                    break;
             }
         }
-        function finalize(){
-            document.getElementById("winner").innerHTML = "The Player will go to " + winner + ". Final Price: " + currentPrice +" Bits.";
+        function finalize() {
+            document.getElementById("winner").innerHTML = "The Player will go to " + winner + ". Final Price: " + currentPrice + " Bits.";
             document.getElementById("team").innerHTML = "TEAM - " + winner;
             document.getElementById("btn1").disabled = true;
-                document.getElementById("btn2").disabled = true;
-                document.getElementById("btn3").disabled = true;
-                document.getElementById("btn4").disabled = true; 
+            document.getElementById("btn2").disabled = true;
+            document.getElementById("btn3").disabled = true;
+            document.getElementById("btn4").disabled = true;
         }
+        var seconds = 10, $seconds = document.querySelector('#countdown');
+        (function countdown() {
+            $seconds.textContent = seconds + ' second' + (seconds == 1 ? '' : 's')
+            if (seconds-- > 0) setTimeout(countdown, 1000)
+        })();
     </script>
     <style>
         .fakeimg {
@@ -156,62 +171,66 @@
         </div>
     </nav>
     <h1 style="background-color: brown; color: white; margin-top: 2%;">Subhajeet Chakraborty</h1>
-          <div class="row">
-              <div class="col-sm-4">
-                <div class="col-sm-6">
-                    <img src="./Resources/Images/subhajeet.jpg" width="100%">
-                  </div>
-                  <div class="col-sm-6">
-                    <h3><span class="badge badge-pill badge-success">POSITION - CENTER BACK</span></h3>
-                    <h3><span class="badge badge-pill badge-info">SPECIALITY - TACKLE</span></h3>
-                    <h3><span class="badge badge-pill badge-warning">HEIGHT - 5'7"</span></h3>
-                    <h3><span id="team" class="badge badge-pill badge-danger">TEAM - </span></h3>
-                  </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="col-sm-6">
+                <img src="./Resources/Images/subhajeet.jpg" width="100%">
+            </div>
+            <div class="col-sm-6">
+                <h3><span class="badge badge-pill badge-success">POSITION - CENTER BACK</span></h3>
+                <h3><span class="badge badge-pill badge-info">SPECIALITY - TACKLE</span></h3>
+                <h3><span class="badge badge-pill badge-warning">HEIGHT - 5'7"</span></h3>
+                <h3><span id="team" class="badge badge-pill badge-danger">TEAM - </span></h3>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h4>Base Price</h4>
+                    <h3>3 Bits</h3>
                 </div>
-                <div class="col-sm-8">
-                    <div class="row">
-                        <div  class="col-sm-6">
-                            <h4>Base Price</h4>
-                            <h3>3 Bits</h3>
-                        </div>
-                        <div  class="col-sm-6">
-                            <h4>Current Price</h4>
-                            <h3 id="currentPrice">3 Bits</h3>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div  class="col-sm-3">
-                            <h3>REUNITED FC</h3>
-                            <h4>Current Bid</h4>
-                            <h3 id="bid1"></h3>
-                            <button id="btn1" type="button" class="btn btn-success" onclick="increaseBid(1)">REUNITED</button>
-                        </div>
-                        <div  class="col-sm-3">
-                            <h3>AMIGOS FC</h3>
-                            <h4>Current Bid</h4>
-                            <h3 id="bid2"></h3>
-                            <button id="btn2" type="button" class="btn btn-danger" onclick="increaseBid(2)">AMIGOS</button>
-                        </div>
-                        <div  class="col-sm-3">
-                            <h3>JUNTAR FC</h3>
-                            <h4>Current Bid</h4>
-                            <h3 id="bid3"></h3>
-                            <button id="btn3" type="button" class="btn btn-info" onclick="increaseBid(3)">JUNTAR</button>
-                        </div>
-                        <div  class="col-sm-3">
-                            <h3>UNITED FC</h3>
-                            <h4>Current Bid</h4>
-                            <h3 id="bid4"></h3>
-                            <button id="btn4" type="button" class="btn btn-warning" onclick="increaseBid(4)">UNITED</button>
-                        </div>
-                    </div>
-                    <hr>
-                    <h4 id="wining"></h4>
-                    <h3 id="winner"></h3>
-                    <button type="button" class="btn btn-primary" onclick="finalize()">FINALIZE</button>
+                <div class="col-sm-4">
+                    <h4>Current Price</h4>
+                    <h3 id="currentPrice">3 Bits</h3>
                 </div>
-              </div>
-            
-         
+                <div class="col-sm-4">
+                    <progress value="0" max="10" id="progressBar" class="progress-bar"></progress>
+                    <span id="countdown"></span>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h3>REUNITED FC</h3>
+                    <h4>Current Bid</h4>
+                    <h3 id="bid1"></h3>
+                    <button id="btn1" type="button" class="btn btn-success" onclick="increaseBid(1)">REUNITED</button>
+                </div>
+                <div class="col-sm-3">
+                    <h3>AMIGOS FC</h3>
+                    <h4>Current Bid</h4>
+                    <h3 id="bid2"></h3>
+                    <button id="btn2" type="button" class="btn btn-danger" onclick="increaseBid(2)">AMIGOS</button>
+                </div>
+                <div class="col-sm-3">
+                    <h3>JUNTAR FC</h3>
+                    <h4>Current Bid</h4>
+                    <h3 id="bid3"></h3>
+                    <button id="btn3" type="button" class="btn btn-info" onclick="increaseBid(3)">JUNTAR</button>
+                </div>
+                <div class="col-sm-3">
+                    <h3>UNITED FC</h3>
+                    <h4>Current Bid</h4>
+                    <h3 id="bid4"></h3>
+                    <button id="btn4" type="button" class="btn btn-warning" onclick="increaseBid(4)">UNITED</button>
+                </div>
+            </div>
+            <hr>
+            <h4 id="wining"></h4>
+            <h3 id="winner"></h3>
+            <button type="button" class="btn btn-primary" onclick="finalize()">FINALIZE</button>
+        </div>
+    </div>
+
+
 </body>
